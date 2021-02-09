@@ -9,9 +9,10 @@
 	<h2>Log In</h2>
 	<form method="post">
 		{% csrf_token %}
+		{{ user.updated_on }}
 		{{ form.as_p }}
 		<button type="submit">Log In</button>
-	</form>
 
+	<ul><li>{{ user.get_full_name }}</li></ul>
 </body>
 </html>	
