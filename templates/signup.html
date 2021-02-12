@@ -12,5 +12,8 @@
 	  {{ form.as_p }}
 	  <button type="submit">Sign up</button>
 	</form>
+	<p>{{% if errors %}
+    		{{ errors }}
+		{% endif %}</p>
 </body>
 </html>
