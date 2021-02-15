@@ -6,14 +6,13 @@
 	<title>Document</title>
 </head>
 <body>
-	<h2>Sign up</h2>
+	<h2>Log In</h2>
 	<form method="post">
-	  {% csrf_token %}
-	  {{ form.as_p }}
-	  <button type="submit">Sign up</button>
-	</form>
-	{% if error %}
-	{{ error }}
-	{% endif %}
-</body>
+		{% csrf_token %}
+		{% if error %}
+		{{ error }}
+		{% endif %}
+		{{ user.updated_on }}
+		{{ form.as_p }}
+	<button type="submit">email valid</button></body>
 </html>

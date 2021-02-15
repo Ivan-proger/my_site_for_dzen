@@ -9,6 +9,9 @@
 	<h2>Log In</h2>
 	<form method="post">
 		{% csrf_token %}
+		{% if error %}
+		{{ error }}
+		{% endif %}
 		{{ user.updated_on }}
 		{{ form.as_p }}
 		<button type="submit">Log In</button>
