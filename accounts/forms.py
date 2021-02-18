@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class SignUpForm(UserCreationForm):
 
-    username = forms.CharField(required=True, max_length=15, label='email',  min_length=2)
+    username = forms.CharField(required=True, max_length=55, label='email',  min_length=2)
     first_name = forms.CharField(required=True, max_length=25, label='логин', )    
     password1 = forms.CharField(required=True, max_length=30, label='Пароль', min_length=8, widget=forms.PasswordInput())
     password2 = forms.CharField(required=True, max_length=30, label='Повторите пароль', widget=forms.PasswordInput())
@@ -16,11 +16,22 @@ class SignUpForm(UserCreationForm):
 
     def clean(self):
         cleaned_data = super().clean()
+
         if User.objects.filter(username=cleaned_data.get('username')).exists():
-            self.add_error('username', "Эта почта уже зарегестрированна")
+            prof = User.objects.filter(username=cleaned_data.get('username')).filter(is_active=True)
+            print(prof)
+            if prof:
+                self.add_error('username', "Эта почта уже зарегестрированна")
+            else:
+                prof.delete()
 
         if User.objects.filter(first_name=cleaned_data.get('first_name')).exists():
-        	self.add_error('first_name', 'такой логин уже занят попробуйте другой')
+            fprof = User.objects.filter(first_name=cleaned_data.get('first_name')).filter(is_active=True)
+            print(prof)
+            if fprof:
+                self.add_error('first_name', 'такой логин уже занят попробуйте другой')
+            else:
+                fprof.delete()
 
        	return cleaned_data 
 
@@ -36,7 +47,9 @@ class SignUpForm(UserCreationForm):
             user.save()
         return user
 
-class EmailValid(forms.Form):
+
+
+class CodeValid(forms.Form):
 	code = forms.CharField(max_length=6, label="Code in email")
 
 

@@ -1,6 +1,7 @@
 import os
 assert 'SYSTEMROOT' in os.environ
 from random import randint
+from django.contrib.auth.backends import BaseBackend
 from django.views import View
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -13,7 +14,7 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 
 from .models import Profile
-from .forms import SignUpForm, Loginform
+from .forms import SignUpForm, Loginform, CodeValid
 
 
 def random_cod():
@@ -21,11 +22,10 @@ def random_cod():
 	return int(cod)
 
 
-
 class MyRegisterFormView(FormView):
     form_class = SignUpForm
-    success_url = "/accounts/login/"
-    template_name = "signup.html"
+    success_url = "/accounts/code/"
+    template_name = "registration/signup.html"
 
     def form_valid(self, form):
         form.save()
@@ -36,14 +36,31 @@ class MyRegisterFormView(FormView):
         u_f = User.objects.get(username=username, email=username, is_active=False)
         code = str(random_cod())
         user = authenticate(username=username, password=my_password1)
-        # send_mail('Welcome!', code, None, ['lox32lox32@gmail.com'], fail_silently=False)
+        send_mail('Welcome!', code, None, [username], fail_silently=False)
         Profile.objects.create(user=u_f, code=code)
-        print(Profile.objects.filter(code=code))
         return super(MyRegisterFormView, self).form_valid(form)
 
     def form_invalid(self, form):
         return super(MyRegisterFormView, self).form_invalid(form)
 
+
+def validcode(request):
+    form = CodeValid(request.POST or None)
+    if form.is_valid():
+        codef = form.cleaned_data.get("code")
+        if Profile.objects.filter(code=codef):
+            profile = Profile.objects.get(code=codef)
+            if profile.user.is_active == False:
+                profile.user.is_active = True
+                Profile.objects.filter(code=codef).update(code=0)
+                profile.user.save()
+                return render(request, 'registration/email.html', {'form' : form, 'error' : 'Код ввудён верно!'})
+            else:
+            	return render(request, 'registration/email.html', {'form' : form, 'error' : 'аккаунт уже активирован'})
+        else:
+        	return render(request, 'registration/email.html', {'form' : form, 'error' : 'код введен неверно'})
+    else:
+    	return render(request, 'registration/email.html', {'form' : form})
 
 
 def pagelogin(request):
@@ -54,14 +71,12 @@ def pagelogin(request):
 
         user = authenticate(username=uservalue, password=passwordvalue)
         if user is not None:
-            print(login(request, user))
-            # login(request, user)
-            return redirect('/')
-
+            if user.is_active:
+                login(request, user)
+                return redirect('/')
         else:
             context= {'form': form,
-                    'error': 'The username and password combination is incorrect'}
-            print("это else после if user is not...")
+                    'error': 'некоректные данные'}
             return render(request, 'registration/login.html', context )
 
     else:
