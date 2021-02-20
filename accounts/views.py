@@ -1,7 +1,6 @@
 import os
 assert 'SYSTEMROOT' in os.environ
 from random import randint
-from django.contrib.auth.backends import BaseBackend
 from django.views import View
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -31,7 +30,7 @@ class MyRegisterFormView(FormView):
         form.save()
 
         my_password1 = form.cleaned_data.get('password1')
-        username = form.cleaned_data.get('username')
+        username = form.cleaned_data.get('email')
 
         u_f = User.objects.get(username=username, email=username, is_active=False)
         code = str(random_cod())
