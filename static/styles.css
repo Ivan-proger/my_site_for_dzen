@@ -1,0 +1,82 @@
+
+
+
+.input{
+	padding: 20px;
+	margin-top: 150px;
+	margin-right: auto;
+	margin-left: auto;
+	width: 290px;
+	height: 430px;
+	border-radius: 6%;
+	display: grid;
+	background: #f6f5f5;
+	box-shadow:13px 13px 80px 0px #393e46;
+}
+
+
+h3 {
+	margin-right: auto;
+	margin-left: auto;
+	font-size: 35px;
+	font-family: 'Noto Sans', sans-serif;
+}
+
+.input input{
+	padding: 3px;
+	margin-right: auto;
+	margin-left: 2em;
+	border: none; 
+	border-radius: 4px;
+	background: #fff;
+	outline: none;
+	height: 32px;
+	width: 80%;
+	font-size: 15px;
+	font-family: 'Prompt', sans-serif;
+	box-shadow:0 0 15px 4px rgba(0,0,0,0.19);
+}
+
+.input button{
+	margin: 10px; 
+	border: none;
+	outline: none;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	font-size: 16px;
+	font-family: 'Prompt', sans-serif;
+	padding: 12px 16px;
+	border-radius: 100px;
+	color: #fff;
+	background: #222831;
+}
+
+button:hover {
+  background: #393e46;
+}
+
+input:focus{
+	color: #000000;
+	margin-top: 3px;
+	margin-bottom: 3px: 
+}
+
+input:hover {
+	box-shadow:0 0 15px 4px rgba(0,0,0,0.27)
+}
+
+.errorlist{
+	color: rgba(255,47,47,0.77);
+	font-size: 12px;
+	font-family: 'Noto Sans', sans-serif;
+}
+
+.finish{
+	color: #9fb8ad;
+	font-size: 18px;
+	font-family: 'Noto Sans', sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@500&family=Roboto:wght@400;900&display=swap')

@@ -1,19 +1,35 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
 </head>
-<body>
-	<h2>Sign up</h2>
-	<form method="post">
-	  {% csrf_token %}
-	  {{ form.as_p }}
-	  <button type="submit">Sign up</button>
-	</form>
-	{% if error %}
-	{{ error }}
-	{% endif %}
+<body class="signup">
+	<div class="input">
+		<h3>Sign up</h3>
+		<form method="post">
+		{% csrf_token %}
+
+			<p>{{ form.first_name.errors }}</p>
+			<p><input type="text" name="first_name" id="your-login" class="input-text" placeholder="Ваше имя" required></p>
+
+			<p>{{ form.email.errors }}</p>			
+			<p><input type="text" name="email" id="your-email" class="input-text" placeholder="email" required></p>
+
+			<p>{{ form.password1.errors }}</p>
+			<p><input type="password" name="password1" id="password1" class="input-text" placeholder="Пароль" required></p>
+
+			<p>{{ form.password2.errors }}</p>
+			<p><input type="password" name="password2" id="password1" class="input-text" placeholder="Повторите пароль" required></p>
+
+		  <button type="submit">Sign up</button>
+		</form>
+		{% if error %}
+		{{ error }}
+		{% endif %}
+	</div>
 </body>
 </html>

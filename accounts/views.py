@@ -53,11 +53,11 @@ def validcode(request):
                 profile.user.is_active = True
                 Profile.objects.filter(code=codef).update(code=0)
                 profile.user.save()
-                return render(request, 'registration/email.html', {'form' : form, 'error' : 'Код ввудён верно!'})
+                return render(request, 'registration/email.html', {'form' : form, 'finish' : 'Код ввeдён верно!'})
             else:
-            	return render(request, 'registration/email.html', {'form' : form, 'error' : 'аккаунт уже активирован'})
+            	return render(request, 'registration/email.html', {'form' : form, 'error' : 'Aккаунт уже активирован'})
         else:
-        	return render(request, 'registration/email.html', {'form' : form, 'error' : 'код введен неверно'})
+        	return render(request, 'registration/email.html', {'form' : form, 'error' : 'Kод введен неверно'})
     else:
     	return render(request, 'registration/email.html', {'form' : form})
 

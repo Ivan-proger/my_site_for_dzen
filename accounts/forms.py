@@ -5,18 +5,16 @@ from django.contrib.auth.models import User
 
 class SignUpForm(UserCreationForm):
 
-    email = forms.CharField(required=True, max_length=55, label='email',  min_length=2)
-    first_name = forms.CharField(required=True, max_length=25, label='логин', )    
+    email = forms.CharField(required=True, max_length=55, label='Email',  min_length=2)
+    first_name = forms.CharField(required=True, max_length=25, label='Логин', min_length=3)    
     password1 = forms.CharField(required=True, max_length=30, label='Пароль', min_length=8, widget=forms.PasswordInput())
     password2 = forms.CharField(required=True, max_length=30, label='Повторите пароль', widget=forms.PasswordInput())
-
     class Meta:
         model = User
         fields = ('first_name', 'email', 'password1', 'password2')
 
     def clean(self):
         cleaned_data = super().clean()
-
         if User.objects.filter(email=cleaned_data.get('email')).exists():
             prof = User.objects.filter(email=cleaned_data.get('email')).filter(is_active=True)
             if prof:
