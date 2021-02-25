@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'accounts',
+    'snowpenguin.django.recaptcha3'
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,8 @@ EMAIL_HOST_PASSWORD = '999999999pop'
 DEFAULT_FROM_EMAIL = 'azzazabahr@gmail.com'
 SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+RECAPTCHA_PUBLIC_KEY = "6Lfpf2caAAAAAG8GFqJir9V96SNs82Io9oHlIYwf"
+RECAPTCHA_PRIVATE_KEY = "6Lfpf2caAAAAAFo4ynANQubI1UIePw4RStgeeRl-"
+RECAPTCHA_DEFAULT_ACTION = 'generic'
+RECAPTCHA_SCORE_THRESHOLD = 0.5

@@ -1,4 +1,5 @@
 {% load static %}
+{% load static recaptcha3 %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+	{% recaptcha_init %}
+	{% recaptcha_ready action_name='signup' %}
 </head>
 <body class="signup">
 	<div class="input">
@@ -25,11 +28,11 @@
 			<p>{{ form.password2.errors }}</p>
 			<p><input type="password" name="password2" id="password1" class="input-text" placeholder="Повторите пароль" required></p>
 
-		  <button type="submit">Sign up</button>
+			{{ form.captcha }}
+		    <button type="submit" class="run">Sign up</button>
 		</form>
-		{% if error %}
-		{{ error }}
-		{% endif %}
+
 	</div>
+
 </body>
 </html>

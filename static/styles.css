@@ -37,7 +37,7 @@ h3 {
 	box-shadow:0 0 15px 4px rgba(0,0,0,0.19);
 }
 
-.input button{
+.run button{
 	margin: 10px; 
 	border: none;
 	outline: none;
@@ -53,7 +53,7 @@ h3 {
 	background: #222831;
 }
 
-button:hover {
+.run button:hover {
   background: #393e46;
 }
 

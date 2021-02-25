@@ -37,8 +37,8 @@ class MyRegisterFormView(FormView):
         user = authenticate(username=username, password=my_password1)
         send_mail('Welcome!', code, None, [username], fail_silently=False)
         Profile.objects.create(user=u_f, code=code)
-        return super(MyRegisterFormView, self).form_valid(form)
 
+        return super(MyRegisterFormView, self).form_valid(form)
     def form_invalid(self, form):
         return super(MyRegisterFormView, self).form_invalid(form)
 
