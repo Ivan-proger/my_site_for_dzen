@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main_block">
+	<div class="pred_conetn">
+	{% for article in article %}
+
+		<div class="content">
+			<h2>{{ article.title }}</h2>
+			<p class="description">{{ article.description }}</p>
+			<img src="/media/img_dzen.webp">	
+		</div>
+
+	{% endfor %}
+	</div>
+</div>
+{% endblock %}

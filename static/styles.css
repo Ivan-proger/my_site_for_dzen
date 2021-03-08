@@ -78,5 +78,93 @@ input:hover {
 	font-size: 18px;
 	font-family: 'Noto Sans', sans-serif;
 }
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap')
-@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@500&family=Roboto:wght@400;900&display=swap')
+
+
+
+
+
+/*маин*/
+
+.shapka{
+	margin: -8px;
+	padding-bottom: 50px; 
+	background: #212121;
+}
+
+
+.hevan{
+	text-align: center;
+	display: grid;
+    grid-template-columns: minmax(50px, 200px) minmax(50px, 200px) minmax(20px, 200px);
+    justify-content: center;
+}
+
+.hevan div {
+	padding-bottom: 10px;
+	padding-top: 4px; 
+	margin-top: 25px;
+	background: #323232;
+ 	border-radius: 5px;
+ 	margin-right: 5px;
+ 	margin-left: 5px;
+}
+
+.hevan a {
+	text-decoration: none;	
+	color: #f05454;
+	font-family: 'Caveat', cursive;
+	text-shadow: 1px 1px 8px #d72323; 
+}
+
+.seti{
+	margin-top: 33px;
+}
+
+
+.main_block{
+	max-width: 1500px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;	
+    display: inline-block;
+	position: relative;    
+	line-height: 0;
+	border: 1px solid black;
+	border-radius: 12px;
+}
+
+.content img{
+	width: 100%;
+	border-radius: 12px;
+}
+
+.content:after {
+	border-radius: 12px;
+	content: "";
+	display: block;    
+	width: 100%;
+	height: 100%;    
+	position: absolute;
+	top: 0;        
+	background-image: linear-gradient(to left, #11de93, #0e7ad6);
+	opacity: 0.8;
+
+}
+.pred_conetn{
+	margin-top: 15px;
+	margin-left: 25px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 230px));
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@500&family=Roboto:wght@400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap');

@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+	<title>{{ article.title|default:"Домашняя страница" }}</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+	<div class="shapka">
+		<div class="hevan">
+			<a href="#" ><div style="padding-bottom: 5px"><span class="material-icons">home</span></div></a>
+			<a href="#"><div>Тесты</div></a>
+			<a href="#" class="seti"><img src="/media/img_dzen.webp" style="width: 23px; height: 23px;"></a>
+		</div>
+	</div>
+	{% block content %}{% endblock %}
+</body>
+</html>
