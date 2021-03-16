@@ -4,12 +4,12 @@ from django.shortcuts import reverse
 
 class Article(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
-	title = models.CharField('заголовок статьи', max_length=40, blank=True)
-	description = models.CharField('описание статьи', max_length=150, blank=True)
-	text = models.TextField('текст статьи', blank=True)
+	title = models.CharField('заголовок статьи', max_length=40, blank=True, null=True)
+	description = models.CharField('описание статьи', max_length=150, blank=True, null=True)
+	text = models.TextField('текст статьи', blank=True, null=True)
 	time = models.DateTimeField(auto_now=True)
-	likes = models.ManyToManyField(User, related_name='likes', blank=True)
-	img = models.ImageField('превью', upload_to='images/', blank=True)
+	likes = models.ManyToManyField(User, related_name='likes', blank=True, null=True)
+	img = models.ImageField('превью', upload_to='images/', blank=True, null=True)
 
 	def __str__(self):
 		return self.title
